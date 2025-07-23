@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function preventDuplicateSubmission() {
+        // Mobile number field ka value le lo
+        var mobileNumber = document.getElementById("name").value;
+
+        // Agar localStorage mein mobile number pehle se hai to form submit hone se roko
+        if (localStorage.getItem(mobileNumber)) {
+          alert("Is mobile number se pehle hi form submit ho chuka hai!");
+          return false;
+        }
+
+        // Agar form pehli baar submit ho raha hai, to mobile number ko localStorage mein store karo
+        localStorage.setItem(mobileNumber, "true");
+        return true; // Form submit hone do
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(to right, #0a0a0a, #3a4452);
+      }
+      div.main {
+        width: 90%;
+        max-width: 400px;
+        margin: 100px auto 0px Auto;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+      }
+
+      @media only screen and (max-width: 500px) {
+        div.main {
+          width: 90%;
+          max-width: 80%;
+          margin: 100px auto 0px;
+          background-color: rgba(255, 255, 255, 0.5);
+          backdrop-filter: blur(20px);
+        }
+
+        input#name,
+        select {
+          width: 92%;
+        }
+        input#submit,
+        input#reset {
+          width: 50%;
+          margin-top: 5px;
+        }
+      }
+      h2 {
+        text-align: center;
+        padding-top: 20px;
+        font-family: sans-serif;
+      }
+      div.Registration {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        font-size: 18px;
+        border-radius: 10px;
+        border: 1px soid rgba(255 255 255 0.3);
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+        color: #fff;
+      }
+      Form#Registration {
+        margin: 40px;
+      }
+      label {
+        font-family: sans-serif;
+        font-size: 18px;
+        font-style: normal;
+      }
+      input#name {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        outline: 0;
+        padding: 7px;
+        background-color: #fff;
+        box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.3);
+      }
+      input#submit {
+        width: 40%;
+        padding: 7px;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 600;
+        border: none;
+        border-radius: 3px;
+        background-color: rgba(250, 100, 0, 0.8);
+        color: #fff;
+        cursor: pointer;
+        border: 1px solid rgba(255 255 255 0.3);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+      label,
+      span,
+      h2 {
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      }
+      input#reset {
+        width: 40%;
+        padding: 7px;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 600;
+        border: none;
+        border-radius: 3px;
+        background-color: aqua;
+        color: #fff;
+        cursor: pointer;
+        border: 1px solid rgba(255 255 255 0.3);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      select {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        outline: 0;
+        padding: 7px;
+        background-color: #fff;
+        box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.3);
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="Registration From">
+        <h2>Registration From</h2>
+        <form
+          action="https://script.google.com/macros/s/AKfycbzsBokRPEuXZL3LaXRn7fxpRvfip4fkvqUcbF-tEnyVlpS3NYgUoCJ4SC03eJc7GOXAIA/exec"
+          id="Registration"
+          method="post"
+          onsubmit="return preventDuplicateSubmission();"
+        >
+          <label> First Name :</label><br />
+          <input
+            type="text"
+            name="fname"
+            class="input"
+            id="name"
+            placeholder="Enter Your First Name"
+            required
+          /><br />
+          <label> Last Name :</label><br />
+          <input
+            type="text"
+            name="lname"
+            class="input"
+            id="name"
+            placeholder="Enter Your Last Name"
+            required
+          /><br />
+          <label> Date Of Birth :</label><br />
+          <input
+            type="date"
+            name="mname"
+            class="input"
+            id="name"
+            placeholder="Enter Your Last Name"
+            required
+          /><br />
+          <label> Mobile Number :</label><br />
+          <input
+            type="number"
+            name="number"
+            class="input"
+            id="name"
+            pattern="[0-9]{10}"
+            placeholder="Enter Your Mobile Number"
+            required
+          /><br />
+          <label> E-mail :</label><br />
+          <input
+            type="email"
+            name="email"
+            class="input"
+            id="name"
+            placeholder="Enter Your valid Email"
+            required
+          /><br />
+          <label> State </label> <br />
+          <select name="selectOption" class="select">
+            <option>Select State</option>
+            <option value=" Not Applicable">Not Applicable</option>
+            <option value="Andaman & Nicobar Islands">
+              Andaman & Nicobar Islands
+            </option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Dadra & Nagar Haveli and Daman & Diu">
+              Dadra & Nagar Haveli and Daman & Diu
+            </option>
+            <option value="Delhi">Delhi</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Ladakh">Ladakh</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            s
+            <option value="Odisha">Odisha</option>
+            <option value="Puducherry">Puducherry</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="West Bengal">West Bengal</option>
+          </select>
+          <br />
+          <label> Gender : </label>
+          <br />
+          &nbsp; &nbsp; &nbsp;
+          <input
+            type="radio"
+            id="male"
+            name="radio"
+            value="male"
+            class="rediobtn"
+            required
+          />
+          <span id="male">Male</span>
+          &nbsp;&nbsp;
+          <input
+            type="radio"
+            id="female"
+            name="radio"
+            value="Female"
+            class="rediobtn"
+            required
+          />
+          <span id="female">Female</span>
+          <br />
+
+          <input type="submit" class="sub" value="submit" id="submit" />
+          &nbsp; &nbsp;
+          <input type="reset" class="sub" value="reset" id="reset" />
+
+          <br />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
